@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<header>
+    <div class="row">
+        <div class="col-xl-auto col-lg-auto col-md-auto col-sm-auto" style="margin-left:10px;">
+            <a class="navbar-brand" asp-action="Index"><img src="~/image/LOGOpng.png" /></a>
+        </div>
+        <div class="col-xl-auto col-lg-auto col-md-auto col-sm-auto h2" style="margin-top:20px;">
+            Комплекс программ для анализа осциллограмм
+        </div>
+        <div>
+            <details>
+                <summary>Первая подстанция</summary>
+                <ul>
+                    <li>
+                        <img src="~/image/One.png" />
+                        <H4 style="color:red">Однофазное короткое замыкание </H4>
+                    </li>
+                </ul>
+            </details>
+            <details>
+                <summary>Вторая подстанция</summary>
+                <ul>
+                    <li>
+                        <img src="~/image/Two.png" />
+                        <H4 style="color:red">Двухфазное короткое замыкание </H4>
+                    </li>
+                </ul>
+            </details>
+            <details>
+                <summary>Третья подстанция</summary>
+                <ul>
+                    <li>
+                        <img src="~/image/Three.png" />
+                        <H4 style="color:red">Трёхфазное короткое замыкание </H4>
+                    </li>
+                </ul>
+            </details>
+            
+        </div>
+    </div>
+</header>
+<a asp-action="Create" asp-controller="Home">Добавление осцилограмм</a>
+<script>
+    alert("Однофазное короткое замыкание на первой подстанции")
+</script>

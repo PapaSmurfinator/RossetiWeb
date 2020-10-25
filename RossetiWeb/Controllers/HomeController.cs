@@ -10,15 +10,16 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using System.Diagnostics;
+using RossetiWeb.Mod;
 
 namespace RossetiWeb.Controllers
 {
     public class HomeController : Controller
     {
-        readonly ApplicationContext db;
+        readonly auradbContext db;
         readonly IWebHostEnvironment _appEnvironment;
 
-        public HomeController(ApplicationContext context, IWebHostEnvironment appEnvironment)
+        public HomeController(auradbContext context, IWebHostEnvironment appEnvironment)
         {
             db = context;
             _appEnvironment = appEnvironment;
@@ -26,19 +27,64 @@ namespace RossetiWeb.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            var x = db._3version.ToList();
+            foreach(var i in x)
+            {
+                if(i != null) {
+                    if (i.UaВл330Дерб330KV > 0.0)
+                    {
+                        if (i.UaВл330Дерб330KV - 10 < 0)
+                        {
+                            ViewData["Message"] = "Трёхфазное короткое замыкание";
+                        }
+                        else
+                        {
+                            if (i.UbВл33009330KV - 10 < 0 || i.UaВл330Дерб330KV - 10 > 0)
+                            {
+                                ViewData["Message"] = "Однофазное короткое замыкание";
+                            }
+                            else
+                            {
+                                ViewData["Message"] = "Двухфазное короткое замыкание";
+                            }
+                        }
+                    }
+                }
+            }
             return View();
         }
         [HttpGet]
-        public IActionResult CreateAscilogram(int AscilogramId)
+        public IActionResult CreateAscillogram()
         {
-             return View();
+            //ViewData["AscillogramCategory"] = new SelectList(db.AscillogramCategories, "Id", "Name"); 
+            return View();
         }
 
         [HttpPost]
-        public IActionResult CreateAscilogram(Ascillogram ascilogram)
+        public IActionResult CreateAscillogram([Bind("Id,Name,AscillogramCategoryId")] Ascillogram ascillogram)
         {
-            db.Ascillograms.Add(ascilogram);
-            db.SaveChanges();
+            //if (ModelState.IsValid)
+            //{
+            //    db.Ascillograms.Add(ascillogram);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+            //ViewData["AscillogramCategory"] = new SelectList(db.AscillogramCategories, "Id", "Name", ascillogram.AscillogramCategoryId);
+            //return View(ascillogram);
+            return null;
+        }
+
+        [HttpGet]
+        public IActionResult CreateAscillogramCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateAscillogramCategory(AscillogramCategory ascillogramcategory)
+        {
+            //db.AscillogramCategories.Add(ascillogramcategory);
+            //db.SaveChanges();
             return RedirectToAction("Index");
         }
         //[HttpPost]

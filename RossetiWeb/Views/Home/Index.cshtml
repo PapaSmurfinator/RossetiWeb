@@ -16,7 +16,7 @@
                 <ul>
                     <li>
                         <img src="~/image/One.png" />
-                        <H4 style="color:red">Однофазное короткое замыкание </H4>
+                        <h3 style="color:red">@ViewData["Message"]</h3>
                     </li>
                 </ul>
             </details>
@@ -38,11 +38,9 @@
                     </li>
                 </ul>
             </details>
-            
         </div>
     </div>
 </header>
-<a asp-action="Create" asp-controller="Home">Добавление осцилограмм</a>
 <script>
     alert("Однофазное короткое замыкание на первой подстанции")
 </script>

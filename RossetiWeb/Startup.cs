@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RossetiWeb.Mod;
 using RossetiWeb.Models;
 
 namespace RossetiWeb
@@ -25,7 +26,7 @@ namespace RossetiWeb
         public void ConfigureServices(IServiceCollection services)
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<auradbContext>(options => options.UseSqlServer(connection));
             services.AddControllersWithViews();
 
         }
@@ -42,7 +43,7 @@ namespace RossetiWeb
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Ascilogram}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

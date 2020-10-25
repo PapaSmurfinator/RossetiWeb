@@ -15,9 +15,16 @@ namespace RossetiWeb.Models
         : base(options)
         {
             //Database.EnsureDeleted();
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Ascillogram>()
+        //        .HasKey(x => x.Id);
 
-        
+        //    modelBuilder.Entity<AscillogramCategory>()
+        //        .HasKey(x => x.Id);
+        //}
+
     }
 }

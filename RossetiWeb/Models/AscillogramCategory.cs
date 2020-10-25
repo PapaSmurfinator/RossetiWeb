@@ -10,8 +10,6 @@ namespace RossetiWeb.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public int AscillogramId { get; set; }
-        public Ascillogram Ascillogram { get; set; }
         public ICollection<Ascillogram> Ascillograms { get; set; }
         public AscillogramCategory()
         {
